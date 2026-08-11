@@ -12,8 +12,13 @@
   let query = '';
 
   function priceText(product) {
-    if (product.priceConfirmed && product.price) return product.price;
-    return 'Contact for current price';
+    if (product.priceDisplay) return product.priceDisplay;
+    if (typeof product.price === 'number') return 'R' + product.price.toFixed(2);
+    return 'Price on request';
+  }
+
+  function productWhatsappMessage(product) {
+    return "Hi Nomhle, I came across your website and I'm interested in " + product.name + " (" + priceText(product) + "). Please can you assist me with ordering?";
   }
 
   function createCard(product) {
@@ -24,11 +29,11 @@
       '<div class="meta">',
       '<div class="card-tag">' + product.category + '</div>',
       '<h3>' + product.name + '</h3>',
-      '<p>' + product.shortDescription + '</p>',
+      '<p>' + (product.purpose || product.shortDescription) + '</p>',
       '<div class="product-price">' + priceText(product) + '</div>',
       '<div class="product-actions">',
       '<button type="button" class="btn btn-outline" data-view-id="' + product.id + '">View Details</button>',
-      '<a class="btn btn-soft" href="' + window.getWhatsAppLink(window.SITE_CONFIG.whatsappMessages.products) + '">Ask Nomhle</a>',
+      '<a class="btn btn-soft" href="' + window.getWhatsAppLink(productWhatsappMessage(product)) + '">Order With Nomhle</a>',
       '</div>',
       '</div>'
     ].join('');
@@ -94,18 +99,20 @@
       '<div>',
       '<div class="card-tag">' + product.category + '</div>',
       '<h2>' + product.name + '</h2>',
+      '<p class="product-price" style="margin-top:0.4rem;">' + priceText(product) + '</p>',
+      '<h3 style="margin-top:1rem;">Purpose</h3>',
+      '<p>' + (product.purpose || product.shortDescription) + '</p>',
       '<p style="margin-top:0.8rem;">' + product.overview + '</p>',
       '<h3 style="margin-top:1rem;">Key Product Characteristics</h3>',
       '<ul>',
-      product.characteristics.map(function (item) { return '<li>' + item + '</li>'; }).join(''),
+      (product.keyFeatures || []).map(function (item) { return '<li>' + item + '</li>'; }).join(''),
       '</ul>',
       '<h3 style="margin-top:1rem;">How to Use</h3>',
-      '<p>' + product.howToUse + '</p>',
+      '<p>' + (product.usage || 'Refer to product label instructions.') + '</p>',
       '<p style="margin-top:0.6rem;"><strong>Pack Size:</strong> ' + (product.packSize || 'Available on request') + '</p>',
-      '<p class="product-price" style="margin-top:0.6rem;">' + priceText(product) + '</p>',
       '<div class="product-actions" style="margin-top:0.9rem;">',
-      '<a class="btn btn-primary" href="' + window.getWhatsAppLink(window.SITE_CONFIG.whatsappMessages.products) + '">Ask Nomhle</a>',
-      '<a class="btn btn-outline" data-store-link href="#">Ask Nomhle to Order</a>',
+      '<a class="btn btn-primary" href="' + window.getWhatsAppLink(productWhatsappMessage(product)) + '">Order With Nomhle</a>',
+      '<a class="btn btn-outline" data-store-link href="#">Shop Through Nomhle</a>',
       '</div>',
       '<p class="notice" style="margin-top:0.8rem;">Product information is provided for general information and should not be considered medical advice.</p>',
       '</div>',
@@ -123,8 +130,8 @@
         inlineStore.rel = 'noopener noreferrer';
         inlineStore.textContent = 'Shop Through Nomhle';
       } else {
-        inlineStore.href = window.getWhatsAppLink(window.SITE_CONFIG.whatsappMessages.products);
-        inlineStore.textContent = 'Ask Nomhle to Order';
+        inlineStore.href = window.getWhatsAppLink(productWhatsappMessage(product));
+        inlineStore.textContent = 'Order With Nomhle';
       }
     }
   }

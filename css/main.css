@@ -142,13 +142,14 @@ button.btn {
   top: 0;
   z-index: 50;
   transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 60, 50, 0.92);
 }
 
 .site-header.scrolled {
-  background: rgba(250, 249, 245, 0.93);
+  background: rgba(13, 44, 37, 0.96);
   backdrop-filter: blur(9px);
-  border-color: rgba(18, 60, 50, 0.12);
+  border-color: rgba(197, 163, 90, 0.22);
 }
 
 .nav-wrap {
@@ -161,20 +162,33 @@ button.btn {
 
 .brand {
   display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand-logo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: inline-flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .brand-mark {
-  font-family: var(--font-heading);
-  letter-spacing: 0.12em;
-  font-size: clamp(1.04rem, 1.9vw, 1.24rem);
-  color: var(--color-primary);
+  font-family: var(--font-body);
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  color: var(--color-white);
+  font-weight: 800;
 }
 
 .brand-sub {
-  font-size: 0.74rem;
-  color: var(--color-muted);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.82);
   margin-top: 0.2rem;
 }
 
@@ -186,7 +200,7 @@ button.btn {
 
 .nav-links a {
   font-weight: 600;
-  color: #264036;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.92rem;
 }
 
@@ -200,7 +214,7 @@ button.btn {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1px solid #b5cab5;
+  border: 1px solid rgba(217, 194, 139, 0.62);
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -210,7 +224,7 @@ button.btn {
   display: none;
   border: 0;
   background: transparent;
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .mobile-drawer {
@@ -264,9 +278,9 @@ button.btn {
   overflow: clip;
   padding: 7.8rem 0 5rem;
   background:
-    radial-gradient(circle at 85% 12%, rgba(99, 167, 68, 0.12), transparent 36%),
-    radial-gradient(circle at 14% 80%, rgba(185, 154, 91, 0.15), transparent 28%),
-    linear-gradient(160deg, #f6f3ea 0%, #edf4ea 55%, #fdfcf8 100%);
+    radial-gradient(circle at 85% 12%, rgba(110, 167, 68, 0.17), transparent 38%),
+    radial-gradient(circle at 14% 80%, rgba(197, 163, 90, 0.2), transparent 30%),
+    linear-gradient(160deg, #113930 0%, #123c32 46%, #efe7d3 46%, #faf8f1 100%);
 }
 
 .hero-grid {
@@ -279,6 +293,17 @@ button.btn {
 .hero-copy {
   display: grid;
   gap: 1.3rem;
+}
+
+.hero-copy .eyebrow,
+.hero-copy h1,
+.hero-copy p,
+.hero-copy li {
+  color: var(--color-white);
+}
+
+.hero-copy h1 {
+  color: var(--color-white);
 }
 
 .hero-actions {
@@ -306,9 +331,26 @@ button.btn {
 
 .hero-visual {
   border-radius: var(--radius-lg);
-  background: #eaf2e8;
+  background: #f3f7f2;
   box-shadow: var(--shadow-lift);
   overflow: hidden;
+}
+
+.hero-product-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  padding: 0.9rem;
+}
+
+.hero-product-stack img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #d8e2d6;
+  padding: 0.55rem;
 }
 
 .hero-visual img {
@@ -419,6 +461,13 @@ button.btn {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.card-media-product img,
+.product-card .card-media img,
+.modal-grid .card-media img {
+  object-fit: contain;
+  background: #fff;
 }
 
 .split-cta {
@@ -539,7 +588,7 @@ textarea {
 }
 
 .site-footer {
-  background: #0f2f27;
+  background: #0d2c25;
   color: rgba(255, 255, 255, 0.86);
   padding: 2.2rem 0 1rem;
 }
@@ -554,6 +603,13 @@ textarea {
   color: var(--color-white);
   font-family: var(--font-heading);
   font-size: 1.45rem;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0.7rem;
 }
 
 .footer-links {
@@ -607,7 +663,7 @@ textarea {
 
 .catalogue-top {
   padding: 7rem 0 2rem;
-  background: linear-gradient(180deg, #f7f4ec 0%, #eef4eb 100%);
+  background: linear-gradient(180deg, #eef4e8 0%, #faf8f1 100%);
 }
 
 .filter-row {

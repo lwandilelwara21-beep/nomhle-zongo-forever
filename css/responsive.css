@@ -8,6 +8,14 @@
     display: inline-flex;
   }
 
+  .brand-logo {
+    height: 44px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
   .hero-grid,
   .grid-2,
   .contact-wrap,
@@ -87,12 +95,12 @@
     min-height: 72px;
   }
 
-  .brand-mark {
-    font-size: 1.02rem;
+  .brand-logo {
+    height: 36px;
   }
 
-  .brand-sub {
-    font-size: 0.68rem;
+  .brand-mark {
+    font-size: 0.84rem;
   }
 
   .hero-actions .btn {
