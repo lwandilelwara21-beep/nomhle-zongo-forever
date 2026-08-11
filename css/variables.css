@@ -1,0 +1,21 @@
+:root {
+  --color-primary: #123c32;
+  --color-primary-accent: #63a744;
+  --color-sage: #e9f1e8;
+  --color-cream: #faf9f5;
+  --color-white: #ffffff;
+  --color-charcoal: #17201d;
+  --color-muted: #66706c;
+  --color-gold: #b99a5b;
+  --color-border: #d7e1d5;
+  --shadow-soft: 0 18px 45px rgba(23, 32, 29, 0.08);
+  --shadow-lift: 0 22px 50px rgba(18, 60, 50, 0.12);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+  --container: min(1180px, calc(100% - 2.4rem));
+  --transition: 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  --font-heading: "Playfair Display", "Georgia", serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+}

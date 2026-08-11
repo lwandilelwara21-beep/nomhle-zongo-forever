@@ -1,0 +1,106 @@
+@media (max-width: 1024px) {
+  .nav-links,
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+  }
+
+  .hero-grid,
+  .grid-2,
+  .contact-wrap,
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid,
+  .catalogue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-cta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4.4rem 0;
+  }
+
+  .hero {
+    padding-top: 6.6rem;
+  }
+
+  .hero-points {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid,
+  .catalogue-grid,
+  .trust-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-sticky-cta {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 35;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid #d7e1d5;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .mobile-sticky-cta .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.86rem;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .site-footer {
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav-wrap {
+    min-height: 72px;
+  }
+
+  .brand-mark {
+    font-size: 1.02rem;
+  }
+
+  .brand-sub {
+    font-size: 0.68rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .split-panel {
+    padding: 1.45rem;
+  }
+}
