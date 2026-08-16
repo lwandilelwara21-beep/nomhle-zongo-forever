@@ -2,7 +2,7 @@ window.FOREVER_STORE_URL = "";
 
 window.SITE_CONFIG = {
   siteName: "Nomhle Zongo",
-  title: "Independent Forever Business Owner | Health & Wellness Entrepreneur",
+  title: "Independent Forever Business | Health & Wellness with Nomhle Zongo",
   phoneDisplay: "083 379 4532",
   phoneLocalDigits: "0833794532",
   whatsappInternationalDigits: "27833794532",
@@ -28,7 +28,7 @@ window.SITE_CONFIG = {
     facebookLabel: "Facebook URL placeholder - update in js/config.js",
     tiktokLabel: "TikTok URL placeholder - update in js/config.js"
   },
-  canonicalBaseUrl: "https://your-domain.example"
+  canonicalBaseUrl: ""
 };
 
 window.getWhatsAppLink = function getWhatsAppLink(message) {

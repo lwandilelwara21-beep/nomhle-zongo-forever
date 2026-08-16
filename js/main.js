@@ -98,12 +98,9 @@
         anchor.target = '_blank';
         anchor.rel = 'noopener noreferrer';
       } else {
-        anchor.href = '#';
-        anchor.setAttribute('aria-label', window.SITE_CONFIG.placeholderLinks[key + 'Label'] || 'Profile URL placeholder');
-        anchor.addEventListener('click', function (event) {
-          event.preventDefault();
-          window.alert('Profile URL placeholder. Update in js/config.js once supplied by client.');
-        });
+        anchor.removeAttribute('href');
+        anchor.setAttribute('aria-disabled', 'true');
+        anchor.classList.add('is-unavailable');
       }
     });
   }
@@ -124,9 +121,12 @@
     if (!window.SITE_CONFIG) return;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) return;
-    if (canonical.getAttribute('href').indexOf('your-domain.example') !== -1) {
+    if (canonical.getAttribute('href').indexOf('your-domain.example') !== -1 && window.SITE_CONFIG.canonicalBaseUrl) {
       const path = window.location.pathname.split('/').pop() || 'index.html';
       canonical.setAttribute('href', window.SITE_CONFIG.canonicalBaseUrl.replace(/\/$/, '') + '/' + path);
+    }
+    if (!window.SITE_CONFIG.canonicalBaseUrl && canonical.getAttribute('href').indexOf('your-domain.example') !== -1) {
+      canonical.remove();
     }
   }
 

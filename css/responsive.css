@@ -73,8 +73,8 @@
     bottom: 0;
     z-index: 35;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.96);
-    border-top: 1px solid #d7e1d5;
+    background: rgba(11, 47, 38, 0.96);
+    border-top: 1px solid rgba(198, 161, 91, 0.28);
     padding: 0.55rem 0.8rem;
   }
 
@@ -110,5 +110,9 @@
 
   .split-panel {
     padding: 1.45rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.5rem;
   }
 }
