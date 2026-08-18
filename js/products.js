@@ -10,6 +10,7 @@
 
   let activeFilter = 'All';
   let query = '';
+  const imageFallback = 'assets/images/products/forever-aloe-vera-gel.png';
 
   function priceText(product) {
     if (product.priceDisplay) return product.priceDisplay;
@@ -21,11 +22,41 @@
     return "Hi Nomhle, I came across your website and I'm interested in " + product.name + " (" + priceText(product) + "). Please can you assist me with ordering?";
   }
 
+  function usesCatalogueCompositeImage(product) {
+    return typeof product.image === 'string' && product.image.indexOf('/page-') !== -1;
+  }
+
+  function styleImageForCleanProductOnlyView(img, product) {
+    if (!img) return;
+
+    // Default behavior: product-focused crop to avoid text-heavy poster framing.
+    img.style.objectFit = 'cover';
+    img.style.objectPosition = '80% 56%';
+    img.style.transform = 'scale(1.04)';
+
+    if (usesCatalogueCompositeImage(product)) {
+      // Page extracts often include text blocks; crop toward the product area.
+      img.style.objectFit = 'cover';
+      img.style.objectPosition = '86% 56%';
+      img.style.transform = 'scale(1.12)';
+    }
+
+    img.addEventListener('error', function onImageError() {
+      if (img.getAttribute('data-fallback-applied') === 'true') return;
+      img.setAttribute('data-fallback-applied', 'true');
+      img.src = imageFallback;
+      img.style.objectFit = 'cover';
+      img.style.objectPosition = '78% 56%';
+      img.style.transform = 'scale(1.02)';
+    });
+  }
+
   function createCard(product) {
     const card = document.createElement('article');
     card.className = 'product-card reveal';
+    const bestSellerBadge = product.bestSeller ? '<span class="best-seller-badge">Best Seller</span>' : '';
     card.innerHTML = [
-      '<div class="card-media"><img loading="lazy" src="' + product.image + '" alt="' + product.name + ' product image"></div>',
+      '<div class="card-media">' + bestSellerBadge + '<img loading="eager" decoding="async" src="' + product.image + '" alt="' + product.name + ' product image"></div>',
       '<div class="meta">',
       '<div class="card-tag">' + product.category + '</div>',
       '<h3>' + product.name + '</h3>',
@@ -37,6 +68,9 @@
       '</div>',
       '</div>'
     ].join('');
+
+    const img = card.querySelector('.card-media img');
+    styleImageForCleanProductOnlyView(img, product);
     return card;
   }
 
@@ -118,6 +152,9 @@
       '</div>',
       '</div>'
     ].join('');
+
+    const modalImage = modalBody.querySelector('.card-media img');
+    styleImageForCleanProductOnlyView(modalImage, product);
 
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');

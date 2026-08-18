@@ -141,10 +141,53 @@
     }, { passive: true });
   }
 
+  function initBestSellerPopup() {
+    if (!Array.isArray(window.PRODUCTS) || !window.getWhatsAppLink || !window.SITE_CONFIG) return;
+    if (sessionStorage.getItem('bestSellerPopupDismissed') === 'true') return;
+
+    const bestSeller = window.PRODUCTS.find(function (product) {
+      return product && product.bestSeller;
+    });
+
+    if (!bestSeller) return;
+
+    const popup = document.createElement('aside');
+    popup.className = 'best-seller-pop';
+    popup.setAttribute('role', 'status');
+    popup.setAttribute('aria-live', 'polite');
+
+    const price = bestSeller.priceDisplay || (typeof bestSeller.price === 'number' ? ('R' + bestSeller.price.toFixed(2)) : 'Price on request');
+    const message = "Hi Nomhle, I came across your website and I'm interested in " + bestSeller.name + " (" + price + "). Please can you assist me with ordering?";
+    const cta = window.getWhatsAppLink(message);
+
+    popup.innerHTML = [
+      '<button class="close" type="button" aria-label="Close best seller popup">×</button>',
+      '<img src="' + bestSeller.image + '" alt="' + bestSeller.name + ' best seller">',
+      '<div>',
+      '<span class="tag">Best Seller</span>',
+      '<h4>' + bestSeller.name + '</h4>',
+      '<p>Most loved by customers right now.</p>',
+      '<div class="price">' + price + '</div>',
+      '<a class="cta" href="' + cta + '">Order on WhatsApp</a>',
+      '</div>'
+    ].join('');
+
+    const close = popup.querySelector('.close');
+    if (close) {
+      close.addEventListener('click', function () {
+        popup.remove();
+        sessionStorage.setItem('bestSellerPopupDismissed', 'true');
+      });
+    }
+
+    document.body.appendChild(popup);
+  }
+
   initWhatsAppLinks();
   initStoreLinks();
   initSocialLinks();
   initYearAndCredit();
   initCanonicalFallback();
   initHeroParallax();
+  initBestSellerPopup();
 })();

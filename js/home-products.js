@@ -8,8 +8,9 @@
   featured.forEach(function (product) {
     const card = document.createElement('article');
     card.className = 'card reveal';
+    const bestSellerBadge = product.bestSeller ? '<span class="best-seller-badge">Best Seller</span>' : '';
     card.innerHTML = [
-      '<div class="card-media card-media-product"><img loading="lazy" src="' + product.image + '" alt="' + product.name + '"></div>',
+      '<div class="card-media card-media-product">' + bestSellerBadge + '<img loading="lazy" src="' + product.image + '" alt="' + product.name + '"></div>',
       '<div class="card-body">',
       '<div class="card-tag">' + product.category + '</div>',
       '<h3>' + product.name + '</h3>',
