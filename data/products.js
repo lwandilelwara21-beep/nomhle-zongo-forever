@@ -1105,6 +1105,36 @@ window.PRODUCTS = [
     featured: false
   },
   {
+    id: "dream-by-forever",
+    name: "Dream by Forever",
+    category: "Personal Care",
+    currency: "ZAR",
+    priceDisplay: "Price on request",
+    image: "assets/images/products/page-070-img-03.png",
+    purpose: "A floral-oriental deodorant fragrance enriched with aloe vera for all-day freshness.",
+    shortDescription: "A floral-oriental deodorant fragrance enriched with aloe vera for all-day freshness.",
+    overview: "Dream by Forever is listed in the catalogue as a feminine spray deodorant fragrance with aloe vera and naturally derived ingredients.",
+    keyFeatures: ["Floral-oriental fragrance", "Aloe vera enriched", "No aluminium listed"],
+    usage: "Spray on skin or clothing as needed for daily freshness.",
+    packSize: "150 ml",
+    featured: false
+  },
+  {
+    id: "desire-by-forever",
+    name: "Desire by Forever",
+    category: "Personal Care",
+    currency: "ZAR",
+    priceDisplay: "Price on request",
+    image: "assets/images/products/page-069-img-03.png",
+    purpose: "A masculine spray deodorant fragrance with a woody and fruity scent profile.",
+    shortDescription: "A masculine spray deodorant fragrance with a woody and fruity scent profile.",
+    overview: "Desire by Forever is listed in the catalogue as a men’s deodorant fragrance made from naturally derived ingredients.",
+    keyFeatures: ["Masculine fragrance", "Woody and fruity profile", "Spray deodorant format"],
+    usage: "Spray lightly on skin or clothing as part of your personal care routine.",
+    packSize: "150 ml",
+    featured: false
+  },
+  {
     id: "aloe-liquid-soap-473ml",
     name: "Aloe Liquid Soap 473ml",
     category: "Personal Care",
